@@ -17,13 +17,9 @@ export const NavBar = () => {
     <NavLink
         className={({ isActive }) => `nav-bar__link ${isActive ? 'nav-bar__link--active' : ''}`}
         to='/internal'
-    >
-        < AccountCircleRoundedIcon />
-
-    </NavLink>
-    
-
-
+      >
+        Página Interna
+      </NavLink>
     </nav>
   )
 }
