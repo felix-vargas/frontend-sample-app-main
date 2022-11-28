@@ -4,7 +4,7 @@ import { Button } from '@mui/material'
 import NavBar from '../components/nav_bar'
 import LogoUSM from '../assets/usm.png'
 
-export const InternalPage = () => {
+export const RamoPage = () => {
   return (
     <div className='page'>
       <div className='header img'>
@@ -18,4 +18,4 @@ export const InternalPage = () => {
   )
 }
 
-export default InternalPage
+export default RamoPage

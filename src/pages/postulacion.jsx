@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@mui/material'
 import { useState } from 'react';
+import LogoUSM from '../assets/usm.png'
 
 /*Imágenes*/
 import LogoProgramacion from '../assets/Programación.png'
@@ -50,8 +51,11 @@ export const Postulacion = () => {
     return (
         <section>
             <div className='page'>
-                <h1 className='page__title'>Postulaciones</h1>
+                <div className='header img'>
+                    <img src={LogoUSM} alt='logo usm' />
+                </div>
                 <NavBar />
+                <h1 className='page__title'>Postulaciones</h1>
                 <h2>Postulaciones</h2>
                 <ToggleButtonGroup
                 color="primary"

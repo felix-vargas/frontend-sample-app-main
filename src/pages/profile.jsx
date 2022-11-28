@@ -12,9 +12,10 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import LogoUSM from '../assets/usm.png'
 
 import NavBar from '../components/nav_bar'
-import '/Users/anyi/Documents/GitHub/frontend-sample-app-main/src/stylesheets/profile.css'
+import '../stylesheets/profile.css'
 import pic from '../assets/elsa.jpeg'
 
 import { styled } from '@mui/material/styles';
@@ -37,8 +38,11 @@ export const ProfilePage = () => {
   return (
     <div className='page' id='wrapper' >
 
-      <h1 className='page__title'>Mi Perfil</h1>
+      <div className='header img'>
+        <img src={LogoUSM} alt='logo usm' />
+      </div>
       <NavBar />
+      <h1 className='page__title'>Mi Perfil</h1>
       
       
     
