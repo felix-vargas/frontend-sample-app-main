@@ -9,7 +9,7 @@ export const NavBar = () => {
     <nav className='nav-bar'>
       <NavLink
         className={({ isActive }) => `nav-bar__link ${isActive ? 'nav-bar__link--active' : ''}`}
-        to='/'
+        to='/postulacion'
       >
         < CalendarViewMonthIcon />
 
@@ -18,7 +18,7 @@ export const NavBar = () => {
         className={({ isActive }) => `nav-bar__link ${isActive ? 'nav-bar__link--active' : ''}`}
         to='/internal'
       >
-        Página Interna
+        < AccountCircleRoundedIcon />
       </NavLink>
     </nav>
   )
