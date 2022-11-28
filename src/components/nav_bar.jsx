@@ -1,5 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import CalendarViewMonthIcon from '@mui/icons-material/CalendarViewMonth';
+
 
 export const NavBar = () => {
   return (
@@ -8,14 +11,19 @@ export const NavBar = () => {
         className={({ isActive }) => `nav-bar__link ${isActive ? 'nav-bar__link--active' : ''}`}
         to='/'
       >
-        Página de inicio
+        < CalendarViewMonthIcon />
+
       </NavLink>
-      <NavLink
+    <NavLink
         className={({ isActive }) => `nav-bar__link ${isActive ? 'nav-bar__link--active' : ''}`}
         to='/internal'
-      >
-        Página Interna
-      </NavLink>
+    >
+        < AccountCircleRoundedIcon />
+
+    </NavLink>
+    
+
+
     </nav>
   )
 }
