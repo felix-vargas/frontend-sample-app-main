@@ -2,6 +2,8 @@ import React from 'react'
 import { Button } from '@mui/material'
 import { useState } from 'react';
 import LogoUSM from '../assets/usm.png'
+import { Navigate } from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 /*Imágenes*/
 import LogoProgramacion from '../assets/Programación.png'
@@ -16,6 +18,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+const cookies = new Cookies();
 
 const asignaturasInformatica = [
     { label: 'IWI-131: Programación'},
@@ -66,12 +69,18 @@ export const Postulacion = () => {
                 <ToggleButton onClick={handleClickName}>Búsqueda por Nombre</ToggleButton>
                 <ToggleButton onClick={handleClickSelect}>Búsqueda por Selección</ToggleButton>
                 </ToggleButtonGroup>
+
                 <div>
                   {isShownName && <NameBox />}
                 </div>
                 <div>
                   {isShown && <SelectBox />}
                 </div>
+                <div>
+                    <FlavorForm />
+                </div>
+                
+                <Button variant='contained' sx={{ width: 345 }}>Postular</Button>
             </div>
         </section>
     )
@@ -101,7 +110,47 @@ export const Postulacion = () => {
           sx={{ width: 350 }}
           renderInput={(params) => <TextField {...params} label="Asignaturas" />}/>
       </div>
+
+     
     );
   }
 
+
+class FlavorForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {value: 'coconut'};
+  
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+  
+    handleSubmit(event) {
+        cookies.set('ayudantias', this.state.value, { path: '/', httpOnly: false });
+        console.log(cookies.get('ayudantias'));
+        alert('Your favorite flavor is: ' + cookies.get('ayudantias'));
+        event.preventDefault();
+    }
+  
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Pick your favorite flavor:
+            <select value={this.state.value} onChange={this.handleChange}>
+                <option value="progra">progra</option>
+                <option value="cc">cc</option>
+                <option selected value="imafi">imafi</option>
+                <option value="ia">ia</option>
+            </select>
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      );
+    }
+  }
 export default Postulacion

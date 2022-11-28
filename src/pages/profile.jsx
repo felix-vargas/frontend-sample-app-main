@@ -50,7 +50,7 @@ export const ProfilePage = () => {
     <CardContent>
         <div id='ayudantias'>
             <h2 >Mis Ayudantías</h2>
-
+            < Wawa />
         
             <Accordion sx={{ maxWidth: 345 }}>
                 <AccordionSummary
@@ -90,6 +90,7 @@ export const ProfilePage = () => {
             
         </div>
         <div id='profile' >
+            
             <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
                 <Grid item xs={3}>
@@ -125,6 +126,32 @@ export const ProfilePage = () => {
     </div>
   );
 }
+class Wawa extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {value: 'coconut'};
+  
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+  
+    handleSubmit(event) {
+        alert('Your favorite flavor is: ' + cookies.getAll());
+        event.preventDefault();
+    }
+  
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <button type="submit">Submit</button>
+        </form>
+      );
+    }
+  }
 
 export default ProfilePage
 

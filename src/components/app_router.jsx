@@ -5,7 +5,6 @@ import HomePage from '../pages/home'
 import InternalPage from '../pages/internal'
 import Postulacion from '../pages/postulacion'
 import ProfilePage from '../pages/profile'
-import ProfilePage from '../pages/profile'
 
 
 const AppRouter = () => {
@@ -16,7 +15,6 @@ const AppRouter = () => {
         <Route path='/internal' element={<InternalPage />} />
         <Route path='/postulacion' element={<Postulacion />} />
         <Route path='/profile' element={<ProfilePage />} />
-        <Route path='/profile' element={<ProfilePage/>} />
       </Routes>
     </BrowserRouter>
   )
