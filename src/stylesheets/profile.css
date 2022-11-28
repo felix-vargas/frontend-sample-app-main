@@ -1,0 +1,19 @@
+
+#wrapper {
+    overflow: hidden; 
+
+}
+#profile {
+    overflow: hidden; 
+}
+#ayudantias {
+    overflow: hidden; 
+    float:left; 
+    margin-right: 80px;
+}
+#pic { 
+    border-radius: 50%; 
+    display: block;
+
+    
+}
