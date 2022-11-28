@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '@mui/material'
+import { useState } from 'react';
 
 /*Imágenes*/
 import LogoProgramacion from '../assets/Programación.png'
@@ -15,18 +16,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-export function ComboBox() {
-    return (
-      <Autocomplete
-        disablePortal
-        id="combo-box-demo"
-        options={top100Films}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Movie" />}
-      />
-    );
-  }
-  const asignaturasInformatica = [
+const asignaturasInformatica = [
     { label: 'IWI-131: Programación'},
     { label: 'INF-134: Estructuras de Datos'},
     { label: 'INF-253: Lenguajes de Programación'},
@@ -38,10 +28,18 @@ export function ComboBox() {
     { label: 'INF-246: Sistemas Operativos'},
     { label: 'INF-256: Redes de Computadores'},
     { label: 'INF-343: Sistemas Distribuidos'},
-  ];
-
+];
+  
 export const Postulacion = () => {
     const [alignment, setAlignment] = React.useState('web');
+    const [isShown, setIsShown] = useState(false);
+    const [isShownName, setIsShownName] = useState(false);
+    const handleClickSelect = event => {
+      setIsShown(current => !current);
+    };
+    const handleClickName = event => {
+      setIsShownName(current => !current);
+    };
   
     const handleChange = (event, newAlignment) => {
       setAlignment(newAlignment);
@@ -58,27 +56,47 @@ export const Postulacion = () => {
                 exclusive
                 onChange={handleChange}
                 aria-label="Platform">
-                <ToggleButton value="name">Búsqueda por Nombre</ToggleButton>
-                <ToggleButton value="select">Búsqueda por Selección</ToggleButton>
+                <ToggleButton onClick={handleClickName}>Búsqueda por Nombre</ToggleButton>
+                <ToggleButton onClick={handleClickSelect}>Búsqueda por Selección</ToggleButton>
                 </ToggleButtonGroup>
-                <h4>Búsqueda por nombre</h4>
-                <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={asignaturasInformatica}
-                sx={{ width: 350 }}
-                renderInput={(params) => <TextField {...params} label="Asignaturas" />}/>
                 
-                <hr></hr>
-                <h4>Búsqueda por selección</h4>
-                <Button><img src={LogoProgramacion} height={100} alt='1' /><br /></Button>
-                <Button><img src={LogoLenguajes} height={100} alt='1' /><br /></Button>
-                <Button><img src={LogoEstructura} height={100} alt='1' /><br /></Button>
-                <Button><img src={LogoEstaca} height={100} alt='1' /><br /></Button>
-                <Button><img src={LogoBD} height={100} alt='1' /><br /></Button>
+            </div>
+            <div>
+              {isShownName && <NameBox />}
+            </div>
+            <div>
+              {isShown && <SelectBox />}
             </div>
         </section>
+        
     )
+  }
+
+  function SelectBox() {
+    return (
+      <div className='page'>
+        <h4>Búsqueda por selección</h4>
+          <Button><img src={LogoProgramacion} height={100} alt='1' /><br /></Button>
+          <Button><img src={LogoLenguajes} height={100} alt='1' /><br /></Button>
+          <Button><img src={LogoEstructura} height={100} alt='1' /><br /></Button>
+          <Button><img src={LogoEstaca} height={100} alt='1' /><br /></Button>
+          <Button><img src={LogoBD} height={100} alt='1' /><br /></Button>
+      </div>
+    );
+  }
+
+  function NameBox() {
+    return (
+      <div className='page'>
+        <h4>Búsqueda por nombre</h4>
+          <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={asignaturasInformatica}
+          sx={{ width: 350 }}
+          renderInput={(params) => <TextField {...params} label="Asignaturas" />}/>
+      </div>
+    );
   }
 
 export default Postulacion
