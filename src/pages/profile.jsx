@@ -123,4 +123,3 @@ export const ProfilePage = () => {
 }
 
 export default ProfilePage
-
