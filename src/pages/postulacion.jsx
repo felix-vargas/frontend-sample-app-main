@@ -28,17 +28,20 @@ const asignaturasInformatica = [
     { label: 'INF-246: Sistemas Operativos'},
     { label: 'INF-256: Redes de Computadores'},
     { label: 'INF-343: Sistemas Distribuidos'},
+    { label: 'INF-280: Estadística Computacional'},
 ];
   
 export const Postulacion = () => {
-    const [alignment, setAlignment] = React.useState('web');
-    const [isShown, setIsShown] = useState(false);
-    const [isShownName, setIsShownName] = useState(false);
+  const [alignment, setAlignment] = React.useState('web');
+  const [isShownName, setIsShownName] = useState(true);
+  const [isShown, setIsShown] = useState(false);
     const handleClickSelect = event => {
-      setIsShown(current => !current);
+      setIsShown(current => true);
+      setIsShownName(current => false);
     };
     const handleClickName = event => {
-      setIsShownName(current => !current);
+      setIsShownName(current => true);
+      setIsShown(current => false);
     };
   
     const handleChange = (event, newAlignment) => {
@@ -59,22 +62,20 @@ export const Postulacion = () => {
                 <ToggleButton onClick={handleClickName}>Búsqueda por Nombre</ToggleButton>
                 <ToggleButton onClick={handleClickSelect}>Búsqueda por Selección</ToggleButton>
                 </ToggleButtonGroup>
-                
-            </div>
-            <div>
-              {isShownName && <NameBox />}
-            </div>
-            <div>
-              {isShown && <SelectBox />}
+                <div>
+                  {isShownName && <NameBox />}
+                </div>
+                <div>
+                  {isShown && <SelectBox />}
+                </div>
             </div>
         </section>
-        
     )
   }
 
   function SelectBox() {
     return (
-      <div className='page'>
+      <div>
         <h4>Búsqueda por selección</h4>
           <Button><img src={LogoProgramacion} height={100} alt='1' /><br /></Button>
           <Button><img src={LogoLenguajes} height={100} alt='1' /><br /></Button>
@@ -87,7 +88,7 @@ export const Postulacion = () => {
 
   function NameBox() {
     return (
-      <div className='page'>
+      <div>
         <h4>Búsqueda por nombre</h4>
           <Autocomplete
           disablePortal
