@@ -1,7 +1,5 @@
-
-
 import React from 'react'
-import { Button} from '@mui/material'
+import { Button } from '@mui/material'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -12,12 +10,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LogoUSM from '../assets/usm.png'
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 import NavBar from '../components/nav_bar'
 import '../stylesheets/profile.css'
 import pic from '../assets/elsa.jpeg'
@@ -26,14 +25,12 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import {Breadcrumbs} from '@mui/material';
-import { Link } from 'react-router-dom';
 
 import ArticleIcon from '@mui/icons-material/Article';
 
 
 
-function AlertDialog() {
+function AlertDialog(id) {
     const [open, setOpen] = React.useState(false);
   
     const handleClickOpen = () => {
@@ -45,6 +42,10 @@ function AlertDialog() {
     };
   
     return (
+      <div>
+        <Button variant="outlined" onClick={handleClickOpen}>
+          Open alert dialog
+        </Button>
         <Dialog
           open={open}
           onClose={handleClose}
@@ -62,11 +63,12 @@ function AlertDialog() {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Disagree</Button>
-            <Button onClick={handleClose} autoFocus>
+            <Button onClick={() => onRemove(id)} autoFocus>
               Agree
             </Button>
           </DialogActions>
         </Dialog>
+      </div>
     );
   }
 
@@ -101,13 +103,13 @@ const initialList = [
       id: 'a',
       firstname: 'IWI131',
       lastname: ' Programación',
-      year: ' Pendiente ',
+      year: ' Aceptada',
     },
     {
       id: 'b',
-      firstname: 'INF280',
-      lastname: ' Estadistica Computacional',
-      year: ' Pendiente',
+      firstname: 'IWI131',
+      lastname: ' Programación',
+      year: ' Aceptada',
     },
   ];
   
@@ -124,16 +126,15 @@ const initialList = [
         throw new Error();
     }
   };
-
-
-
+  
   const App = () => {
     const [listData, dispatchListData] = React.useReducer(listReducer, {
       list: initialList,
       isShowList: true,
     });
+  
     function handleRemove(id) {
-        dispatchListData({ type: 'REMOVE_ITEM', id });
+      dispatchListData({ type: 'REMOVE_ITEM', id });
     }
   
     if (!listData.isShowList) {
@@ -143,9 +144,6 @@ const initialList = [
     return <List list={listData.list} onRemove={handleRemove} />;
   };
   
-
-
-
   const List = ({ list, onRemove }) => (
     <ul>
       {list.map((item) => (
@@ -159,8 +157,8 @@ const initialList = [
       <span>{item.firstname}</span>
       <span>{item.lastname}</span>
       <span>{item.year}</span>
-      <button type="button" onClick={() => { if (window.confirm('¿Seguro que deseas eliminar esta postulación?')) onRemove(item.id) } }>
-        <DeleteForeverIcon/>
+      <button type="button" onClick={() => onRemove(item.id)}>
+        Remove
       </button>
       <div>
         {<AlertDialog/>}
@@ -171,36 +169,24 @@ const initialList = [
 
 
 
+
 export const ProfilePage = () => {
 
   return (
     <div className='page' id='wrapper' >
 
-        <div className='header img'>
-                    <Link to="/">
-                        <img src={LogoUSM} alt='logo usm' className='imageLink'/>
-                    </Link>
-        </div>
+      <div className='header img'>
+        <img src={LogoUSM} alt='logo usm' />
+      </div>
       <NavBar />
-      <Breadcrumbs aria-label="breadcrumb">
-                    <Link
-                        to ="/"
-                        color="inherit"
-                    >
-                        Inicio
-                    </Link>
-                    <Typography color="textPrimary">
-                        Perfil
-                    </Typography>
-        </Breadcrumbs>
       <h1 className='page__title'>Mi Perfil</h1>
-
+      
       
     
     <Card sx={{ minWidth: 275 }}>
     <CardContent>
         <div id='ayudantias'>
-            <h2 >Mis Postulaciones</h2>
+            <h2 >Mis Ayudantías</h2>
             {allStorage}
 
             {localStorage.getItem('Name') && (
@@ -211,13 +197,19 @@ export const ProfilePage = () => {
             <div>
                   {<App />}
                 </div>
+
+        
+            <Button variant='contained' sx={{ width: 345 }}>Postular</Button>
             
         </div>
         <div id='profile' >
             <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-                <Grid item xs={8}>
-                    <Card sx={{ minWidth: 100 , minHeight:'90%'}}>
+                <Grid item2 xs={3}>
+                <img src={pic} id='pic' height={200} width={200} alt='foto'/><img />
+                </Grid>
+                <Grid item2 xs={9}>
+                    <Card sx={{ minWidth: 275 }}>
                     <CardContent>
                         
                         <Typography variant="h5" component="div">
@@ -231,10 +223,11 @@ export const ProfilePage = () => {
                         <br />
                         </Typography>
                     </CardContent>
+                    <CardActions>
+                        <Button size="small">Currículum</Button>
+                    </CardActions>
                     </Card>
-                </Grid>
-                <Grid item xs={1}>
-                    <img src={pic} id='pic' height={200} width={200} alt='foto'/><img />
+                
                 </Grid>
             </Grid>
             </Box>

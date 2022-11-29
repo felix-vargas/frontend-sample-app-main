@@ -35,9 +35,11 @@ export const Ramobd = () => {
     const handleClose = () => setOpen(false);
     return (
     <div className='page'>
-      <div className='header img'>
-        <img src={LogoUSM} alt='logo usm' />
-      </div>
+                <div className='header img'>
+                    <Link to="/">
+                        <img src={LogoUSM} alt='logo usm' className='imageLink'/>
+                    </Link>
+                </div>
       <NavBar />
       <Breadcrumbs aria-label="breadcrumb">
                     <Link
@@ -160,7 +162,9 @@ export const Ramobd = () => {
                 </Card>
             </div>
       </div>
-
+      <Link to="/postulacion">
+                <Button>VOLVER</Button>
+        </Link>
     </div>
   )
 }

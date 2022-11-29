@@ -53,7 +53,9 @@ export const Postulacion = () => {
         <section>
             <div className='page'>
                 <div className='header img'>
-                    <img src={LogoUSM} alt='logo usm' />
+                    <Link to="/">
+                        <img src={LogoUSM} alt='logo usm' className='imageLink'/>
+                    </Link>
                 </div>
                 <NavBar />
                 <Breadcrumbs aria-label="breadcrumb">
@@ -113,7 +115,8 @@ export const Postulacion = () => {
          'INF-134: Estructuras de Datos': 'ramoedd',
          'INF-253: Lenguajes de Programación': 'ramolp',
          'INF-239: Bases de Datos':'ramobdd',
-         'INF-280: Estadística Computacional': 'ramoestaca'
+         'INF-280: Estadística Computacional': 'ramoestaca',
+         '':'postulacion'
     }
     return (
       <div>
