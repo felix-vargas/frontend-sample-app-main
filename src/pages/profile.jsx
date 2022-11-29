@@ -1,7 +1,7 @@
 
 
 import React from 'react'
-import { Button } from '@mui/material'
+import { Button} from '@mui/material'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -22,6 +22,8 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import {Breadcrumbs} from '@mui/material';
+import { Link } from 'react-router-dom';
 
 import ArticleIcon from '@mui/icons-material/Article';
 
@@ -42,8 +44,19 @@ export const ProfilePage = () => {
         <img src={LogoUSM} alt='logo usm' />
       </div>
       <NavBar />
+      <Breadcrumbs aria-label="breadcrumb">
+                    <Link
+                        to ="/"
+                        color="inherit"
+                    >
+                        Inicio
+                    </Link>
+                    <Typography color="textPrimary">
+                        Perfil
+                    </Typography>
+        </Breadcrumbs>
       <h1 className='page__title'>Mi Perfil</h1>
-      
+
       
     
     <Card sx={{ minWidth: 275 }}>
@@ -86,17 +99,13 @@ export const ProfilePage = () => {
                 </Typography>
                 </AccordionDetails>
             </Accordion>
-            <Button variant='contained' sx={{ width: 345 }}>Postular</Button>
-            
+
         </div>
         <div id='profile' >
             <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-                <Grid item xs={3}>
-                <img src={pic} id='pic' height={200} width={200} alt='foto'/><img />
-                </Grid>
-                <Grid item xs={9}>
-                    <Card sx={{ minWidth: 275 }}>
+                <Grid item xs={8}>
+                    <Card sx={{ minWidth: 100 }}>
                     <CardContent>
                         
                         <Typography variant="h5" component="div">
@@ -114,7 +123,9 @@ export const ProfilePage = () => {
                         <Button size="small">Currículum</Button>
                     </CardActions>
                     </Card>
-                
+                </Grid>
+                <Grid item xs={1}>
+                    <img src={pic} id='pic' height={200} width={200} alt='foto'/><img />
                 </Grid>
             </Grid>
             </Box>

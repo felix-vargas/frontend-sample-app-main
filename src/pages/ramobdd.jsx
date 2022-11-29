@@ -7,15 +7,15 @@ import Typography from '@mui/material/Typography';
 import NavBar from '../components/nav_bar'
 import LogoUSM from '../assets/usm.png'
 /*Imágenes*/
-import LogoProgramacion from '../assets/Programación.png'
+import LogoBd from '../assets/Bases de Datos.png'
 import Labimg from '../assets/ranking_investigacion.jpg'
 import Catedraimg from '../assets/grview-79076-1.jpg'
 import Modal from '@mui/material/Modal'
 import Box from '@mui/material/Box'
+
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import {Breadcrumbs} from '@mui/material';
 import { Link } from 'react-router-dom';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -29,7 +29,7 @@ const style = {
 };
 
 
-export const RamoPage = () => {
+export const Ramobd = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -53,14 +53,14 @@ export const RamoPage = () => {
                         Postulaciones
                     </Link>
                     <Typography color="textPrimary">
-                        IWI-131-Programacion
+                        INF-239-Bases de datos
                     </Typography>
         </Breadcrumbs>
-      <h1>IWI - 131 Programación</h1>
+      <h1>INF - 239 Bases de datos</h1>
 
       <div className='float-container'>        
         <div className='float-child'>
-            <img src={LogoProgramacion} alt='logo usm' />
+            <img src={LogoBd} alt='logo usm' />
             
         </div>
         
@@ -165,4 +165,4 @@ export const RamoPage = () => {
   )
 }
 
-export default RamoPage
+export default Ramobd
